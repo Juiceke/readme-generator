@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-// const generatePage = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
+const generatePage = require('./utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
 const questions = () => {
     return inquirer.prompt([
@@ -21,6 +22,12 @@ const questions = () => {
         message: 'What is the description for your application?'
     },
     {
+        type: 'list',
+        name: 'license',
+        message: 'What license is your application covered under?',
+        choices: ['Public Domain License', 'LGPL', 'Permissive', 'Copyleft', 'Proprietary', 'No license']
+    },
+    {
         type: 'input',
         name: 'installation',
         message: 'How would someone install your application?'
@@ -38,12 +45,12 @@ const questions = () => {
     {
         type: 'input',
         name: 'tests',
-        message: 'what is your test???'
+        message: 'Give some instructions on how to use your app.'
     },
     {
         type: 'input',
         name: 'email',
-        message: 'What is your preffered email account?'
+        message: 'What is your preffered email account for people to ask questions?'
     },
     ])}
 
@@ -54,7 +61,10 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     questions()
-    .then(function (data) {console.log(data)})
+    .then(data => {console.log(data);
+    return generateMarkdown(data)
+})
+    
     
 }
 
