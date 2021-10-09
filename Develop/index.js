@@ -25,7 +25,7 @@ const questions = () => {
         type: 'list',
         name: 'license',
         message: 'What license is your application covered under?',
-        choices: ['Public Domain License', 'LGPL', 'Permissive', 'Copyleft', 'Proprietary', 'No license']
+        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'Apache-2.0', 'Mit', 'bsl-1.0', 'Unlicense', 'No license']
     },
     {
         type: 'input',
@@ -55,18 +55,25 @@ const questions = () => {
     ])}
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-
+function writeToFile(data) {
+fs.writeFile(`./utils/README.md`, data, err => {
+    if (err) {
+        throw err
+    };
+    console.log('ReadMe has been successfully generated! Check the utils directory to see it!')
+})
 };
 // TODO: Create a function to initialize app
 function init() {
     questions()
     .then(data => {console.log(data);
-    return generateMarkdown(data)
-})
-    
-    
+    return generateMarkdown(data);
+    })
+    .then((data) => {
+        writeToFile(data)
+    })
 }
+
 
 // Function call to initialize app
 init();
