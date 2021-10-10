@@ -2,8 +2,9 @@
   ${data.description}
 
   ## Table of Contents
-  [Installation section](#-Installation)
-  [Usage section](#-Usage)
+  [Installation section](#Installation)
+  
+  [Usage section](#Usage)
 
   ## Installation
   ${data.installation}
