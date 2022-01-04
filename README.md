@@ -16,7 +16,7 @@
   [Email section](#Email)
 
   ## Installation
-  Clone the repository, then install npm, node, and inquirer to your computer to make this work!
+  Clone the repository, then install enter the command ```npm i``` or install all dependies in the package.json file!
 
   ## Usage
   It will make READme's for people
